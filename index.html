@@ -6,204 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    :root {
-      --bg: #0b0f1a;
-      --card: #111827;
-      --border: #1f2937;
-      --accent: #7c3aed;
-      --accent2: #22d3ee;
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --radius: 18px;
-      --transition: 150ms ease-out;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
+      padding: 40px;
+      background: #0b0f1a;
+      color: #f9fafb;
       font-family: system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 24px;
+      gap: 30px;
+      text-align: center;
     }
 
-    .container {
-      max-width: 900px;
-      width: 100%;
-      display: grid;
-      gap: 32px;
-      grid-template-columns: 1.4fr 1fr;
-    }
-
-    @media (max-width: 800px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* LEFT SIDE */
-    .title {
-      font-size: clamp(26px, 4vw, 34px);
+    h1 {
+      font-size: 28px;
       font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .gradient {
       background: linear-gradient(120deg, #38bdf8, #a855f7, #f97316);
       -webkit-background-clip: text;
       color: transparent;
     }
 
-    .subtitle {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-      max-width: 460px;
-      margin-bottom: 20px;
-    }
-
-    .links {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @media (max-width: 600px) {
-      .links {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: var(--radius);
+    .btn {
+      width: 260px;
+      padding: 14px 0;
+      border-radius: 12px;
+      background: #111827;
+      border: 1px solid #1f2937;
+      color: #f9fafb;
       text-decoration: none;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      transition: background var(--transition), border-color var(--transition);
+      font-size: 15px;
+      transition: 150ms ease-out;
+      display: block;
     }
 
-    .card:hover {
+    .btn:hover {
       background: #1a2234;
-      border-color: var(--accent2);
+      border-color: #22d3ee;
     }
 
-    .card-title {
-      font-size: 14px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .card-desc {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* RIGHT PANEL */
-    .panel {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: var(--radius);
-    }
-
-    .panel-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .panel-sub {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .tag {
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #0f1624;
-      color: var(--muted);
-    }
-
-    .footer {
-      margin-top: 18px;
-      font-size: 11px;
-      color: var(--muted);
+    p {
+      color: #9ca3af;
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <h1>Vincent’s Tools & AI</h1>
 
-    <!-- LEFT -->
-    <div>
-      <h1 class="title">
-        Navigate your <span class="gradient">Tools</span> & <span class="gradient">AI</span> workspace.
-      </h1>
+  <a class="btn" href="https://vincentrasskazov.github.io/tools">🛠 Tools</a>
+  <a class="btn" href="https://vincentrasskazov.github.io/ai/">🤖 AI</a>
 
-      <p class="subtitle">
-        A minimal entrypoint into your ecosystem—one click to jump into utilities, one click to drop into AI flows.
-      </p>
-
-      <div class="links">
-        <a class="card" href="https://vincentrasskazov.github.io/tools">
-          <div class="card-title">🛠 Tools hub</div>
-          <div class="card-desc">Jump into your utility stack—scripts and helpers that keep your workflows sharp.</div>
-        </a>
-
-        <a class="card" href="https://vincentrasskazov.github.io/ai/">
-          <div class="card-title">🤖 AI website</div>
-          <div class="card-desc">Drop into a free AI interface with cutting-edge models.</div>
-        </a>
-      </div>
-
-      <div class="footer">
-        Single static file. No backend, no dependencies.
-      </div>
-    </div>
-
-    <!-- RIGHT -->
-    <div class="panel">
-      <div class="panel-title">Routing profile</div>
-      <div class="panel-sub">
-        Two primary surfaces detected. Choose where you want to think:
-        execution layer (Tools) or reasoning layer (AI).
-      </div>
-
-      <div class="tags">
-        <span class="tag">Zero backend</span>
-        <span class="tag">Fast entry</span>
-        <span class="tag">Keyboard-friendly</span>
-        <span class="tag">Dark mode native</span>
-      </div>
-    </div>
-
-  </div>
+  <p>Single static file. Zero backend.</p>
 </body>
 </html>
