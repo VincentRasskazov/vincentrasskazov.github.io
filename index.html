@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Vincent’s Tools & AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Vincent Websites</title>
+  <meta name="description" content="Explore Vincent Rasskazov's Websites">
+  <meta name="keywords" content="Vincent Rasskazov, AI tools, productivity apps, tech resources, digital tools">
+  <link rel="canonical" href="https://vincentrasskazov.github.io/" />
+
+  <meta property="og:title" content="Vincent’s Tools & AI Hub" />
+  <meta property="og:description" content="Access a curated suite of AI and productivity tools by Vincent Rasskazov." />
+  <meta property="og:type" content="website" />
 
   <style>
     body {
@@ -11,52 +19,88 @@
       padding: 40px;
       background: #0b0f1a;
       color: #f9fafb;
-      font-family: system-ui, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
+      gap: 20px;
       text-align: center;
+      min-height: 100vh;
+      justify-content: center;
+    }
+
+    header {
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 28px;
-      font-weight: 600;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
       background: linear-gradient(120deg, #38bdf8, #a855f7, #f97316);
       -webkit-background-clip: text;
-      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: #9ca3af;
+      font-size: 16px;
+      max-width: 400px;
+      margin: 0 auto 10px auto;
+      line-height: 1.5;
+    }
+
+    .nav-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
     .btn {
-      width: 260px;
-      padding: 14px 0;
+      width: 280px;
+      padding: 16px 0;
       border-radius: 12px;
       background: #111827;
       border: 1px solid #1f2937;
       color: #f9fafb;
       text-decoration: none;
-      font-size: 15px;
-      transition: 150ms ease-out;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.2s ease;
       display: block;
     }
 
     .btn:hover {
       background: #1a2234;
-      border-color: #22d3ee;
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
     }
 
-    p {
-      color: #9ca3af;
-      font-size: 13px;
+    footer {
+      margin-top: 30px;
+      color: #6b7280;
+      font-size: 12px;
     }
   </style>
 </head>
 
 <body>
-  <h1>Vincent’s Tools & AI</h1>
 
-  <a class="btn" href="https://vincentrasskazov.github.io/tools">Tools</a>
-  <a class="btn" href="https://vincentrasskazov.github.io/ai/">AI</a>
+  <header>
+    <h1>Vincent Rasskazov</h1>
+    <p class="subtitle">Websites</p>
+  </header>
+
+  <nav class="nav-container">
+    <a class="btn" href="https://vincentrasskazov.github.io/tools">2.5K+ Tools</a>
+    <a class="btn" href="https://vincentrasskazov.github.io/ai/">AI website</a>
+    <a class="btn" href="https://vincentrasskazov.github.io/talk">Talk (totally not a discord clone)</a>
+  </nav>
+
+  <footer>
+    <p>&copy; 2026 Vincent Rasskazov</p>
+  </footer>
 
 </body>
 </html>
