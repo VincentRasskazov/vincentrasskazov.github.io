@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    
+    <!-- Load Tailwind CSS via CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Import premium geometric fonts from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* Prevent scrolling on 404 */
+            margin: 0;
+            height: 100vh;
+        }
+
+        /* Typography overrides */
+        .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Subtle SVG noise overlay for texture */
+        .noise-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
+        /* Dynamic spotlight effect following the cursor */
+        .spotlight {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            background: radial-gradient(circle 800px at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.04), transparent 60%);
+            transition: background 0.1s ease;
+        }
+
+        /* 
+         * Premium Glitch Effect 
+         * Uses pseudo-elements to slice and offset the text occasionally, 
+         * creating a stuttering effect rather than a constant shake.
+         */
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch-text {
+            position: relative;
+            font-size: 8rem;
+            line-height: 1;
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .glitch-text {
+                font-size: 14rem;
+            }
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color); /* Matches background to mask the original text */
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .glitch-text::before {
+            left: 3px;
+            text-shadow: -2px 0 #ff003c;
+            animation: glitch-anim-1 4s infinite linear alternate-reverse;
+        }
+
+        .glitch-text::after {
+            left: -3px;
+            text-shadow: 2px 0 #00f0ff;
+            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        }
+
+        /* Keyframes for erratic stuttering */
+        @keyframes glitch-anim-1 {
+            0%, 4%, 8%, 100% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0); }
+            5% { opacity: 1; clip-path: inset(20% 0 60% 0); transform: translate(-4px, 2px); }
+            6% { opacity: 1; clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); }
+            7% { opacity: 1; clip-path: inset(40% 0 40% 0); transform: translate(-2px, 0); }
+            
+            45%, 49%, 53% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0); }
+            50% { opacity: 1; clip-path: inset(10% 0 70% 0); transform: translate(3px, -3px); }
+            51% { opacity: 1; clip-path: inset(60% 0 20% 0); transform: translate(-3px, 1px); }
+            52% { opacity: 1; clip-path: inset(30% 0 50% 0); transform: translate(1px, 2px); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0%, 24%, 28%, 100% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0); }
+            25% { opacity: 1; clip-path: inset(30% 0 50% 0); transform: translate(4px, -2px); }
+            26% { opacity: 1; clip-path: inset(70% 0 10% 0); transform: translate(-2px, 2px); }
+            27% { opacity: 1; clip-path: inset(20% 0 60% 0); transform: translate(2px, 0); }
+
+            75%, 79%, 83% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0); }
+            80% { opacity: 1; clip-path: inset(50% 0 30% 0); transform: translate(-3px, 3px); }
+            81% { opacity: 1; clip-path: inset(15% 0 75% 0); transform: translate(3px, -1px); }
+            82% { opacity: 1; clip-path: inset(80% 0 5% 0); transform: translate(-1px, -2px); }
+        }
+
+        /* Fade in animation for the whole page */
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="relative flex items-center justify-center min-h-screen selection:bg-white/20 selection:text-white">
+
+    <!-- Texture and Lighting Layers -->
+    <div class="noise-overlay"></div>
+    <div class="spotlight"></div>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10 flex flex-col items-center justify-center px-6 text-center fade-in w-full max-w-3xl mx-auto">
+        
+        <!-- Glitched 404 Heading -->
+        <div class="glitch-wrapper mb-2">
+            <h1 class="glitch-text font-space font-bold tracking-tighter text-white select-none" data-text="404">
+                404
+            </h1>
+        </div>
+
+        <!-- Human, non-robotic subtitle -->
+        <p class="text-lg md:text-xl text-gray-400 font-medium mb-12 max-w-md mx-auto leading-relaxed">
+            We couldn't find what you were looking for.
+        </p>
+
+        <!-- Navigation Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+            
+            <!-- Go Back Button (JavaScript trigger) -->
+            <button 
+                id="btn-back" 
+                class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-white/10 bg-transparent text-white font-medium tracking-wide transition-all duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="Go back to previous page"
+            >
+                Go Back
+            </button>
+
+            <!-- Go Home Button (Direct Anchor Link) -->
+            <a 
+                href="https://vincentrasskazov.github.io/" 
+                class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-white bg-white text-black font-medium tracking-wide transition-all duration-300 hover:bg-transparent hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="Return to homepage"
+            >
+                Go Home
+            </a>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Dynamic Spotlight Effect tracking cursor movement
+            const root = document.documentElement;
+            
+            document.addEventListener('mousemove', (e) => {
+                // Calculate percentage position of the mouse
+                const x = (e.clientX / window.innerWidth) * 100;
+                const y = (e.clientY / window.innerHeight) * 100;
+                
+                // Update CSS variables for the spotlight gradient
+                root.style.setProperty('--mouse-x', `${x}%`);
+                root.style.setProperty('--mouse-y', `${y}%`);
+            });
+
+            // Fallback for touch devices to center the spotlight if tapped
+            document.addEventListener('touchstart', (e) => {
+                if (e.touches.length > 0) {
+                    const x = (e.touches[0].clientX / window.innerWidth) * 100;
+                    const y = (e.touches[0].clientX / window.innerHeight) * 100;
+                    root.style.setProperty('--mouse-x', `${x}%`);
+                    root.style.setProperty('--mouse-y', `${y}%`);
+                }
+            }, { passive: true });
+
+            // 2. Go Back Functionality
+            const btnBack = document.getElementById('btn-back');
+            
+            btnBack.addEventListener('click', () => {
+                // Check if there is a history to go back to
+                if (window.history.length > 1 && document.referrer !== "") {
+                    window.history.back();
+                } else {
+                    // Fallback to home if opened in a new tab with no history
+                    window.location.href = 'https://vincentrasskazov.github.io/';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
